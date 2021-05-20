@@ -81,7 +81,6 @@ class Dashboard extends Component {
 
               <hr />
 
-              <NavLink to="/leaderboard">go to leaderboard</NavLink>
               <Switch>
                 <Route exact path="/dashboard">
                   <h4 className="infosTitle">personal data :</h4>
