@@ -57,6 +57,14 @@ class Dashboard extends Component {
                   <div className="infos-list">
                     <div className="links">
                       <NavLink
+                        className="link-infos"
+                        to="/dashboard/infos"
+                      >
+                        personal infos
+                      </NavLink>
+                    </div>
+                    <div className="links">
+                      <NavLink
                         className="link"
                         to="/dashboard/answeredquestions"
                       >
@@ -67,7 +75,7 @@ class Dashboard extends Component {
                     <div className="links">
                       <NavLink
                         className="link"
-                        to="/dashboard/unansweredquestions"
+                        to="/dashboard/"
                       >
                         unanswered questions
                       </NavLink>
@@ -88,11 +96,17 @@ class Dashboard extends Component {
 
               <div className="contents">
                 <h3 className="title">Dashboard</h3>
-
                 <hr />
 
                 <Switch>
                   <Route exact path="/dashboard">
+                    <UnAnswers
+                      answers={user.answers}
+                      questions={questions}
+                      users={this.props.users}
+                    />
+                  </Route>
+                  <Route exact path="/dashboard/infos">
                     <h4 className="infosTitle">personal data :</h4>
                     <p className="infos">
                       <span>first name : </span>
@@ -109,13 +123,6 @@ class Dashboard extends Component {
                   </Route>
                   <Route exact path="/dashboard/answeredquestions">
                     <Answers
-                      answers={user.answers}
-                      questions={questions}
-                      users={this.props.users}
-                    />
-                  </Route>
-                  <Route exact path="/dashboard/unansweredquestions">
-                    <UnAnswers
                       answers={user.answers}
                       questions={questions}
                       users={this.props.users}
