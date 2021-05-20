@@ -5,6 +5,7 @@ const initialState = {
   users: {},
   questions: {},
   AuthedUser: "",
+  isLoggedIn: false,
 };
 
 // data from api
@@ -30,6 +31,7 @@ export const rootRducer = (state = initialState, action) => {
     case "SELECT_USER":
       if (action.payload !== "") {
         initialState.AuthedUser = action.payload;
+        initialState.isLoggedIn = true;
         setTimeout(() => {
           document.querySelector(".userLinks").style.display = "flex";
           document.querySelector(".userLinks").style.justifyContent =
@@ -99,6 +101,7 @@ export const rootRducer = (state = initialState, action) => {
     case "LOG_OUT":
       if (action.payload === "logging out") {
         initialState.AuthedUser = "";
+        initialState.isLoggedIn = false;
         console.log(action.payload);
       }
 

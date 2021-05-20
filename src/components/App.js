@@ -1,5 +1,6 @@
 /** Routers */
 import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 
 // importing of our components
 import Header from "./Header";
@@ -14,6 +15,10 @@ import Login from "./Login";
 import "../styles/App.scss";
 
 function App(props) {
+
+  console.log('authedUser is :: ', props.authedUser);
+  console.log("IsLoggedIn :: ", props.isLoggedIn);
+  
   return (
     // to insert the routes use BrowserRouter
     <BrowserRouter>
@@ -62,4 +67,11 @@ function App(props) {
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    authedUser: state.AuthedUser,
+    isLoggedIn: state.isLoggedIn
+  };
+}
+
+export default connect(mapStateToProps)(App);

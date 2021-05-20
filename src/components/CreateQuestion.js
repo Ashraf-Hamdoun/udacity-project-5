@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 // import all actions to dispatch them
 import * as actions from "../Store/actions";
 
+import GuestGreeting from "./GuestGreeting";
+
 class CreateQuestion extends Component {
   // save data to reuse it
   state = {
@@ -53,47 +55,56 @@ class CreateQuestion extends Component {
   };
 
   render() {
-    return (
-      <div className="createQuestion">
-        <h4 className="title">Creating a new Question</h4>
-        <form>
-          <div className="form-group">
-            <label htmlFor="txtOfOptionOne">Option One</label>
-            <input
-              type="text"
-              className="form-control"
-              id="txtOfOptionOne"
-              placeholder="Enter here the first option"
-              onKeyUp={this.handleOptionOne}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="txtOfOptionTwo">Option Two</label>
-            <input
-              type="text"
-              className="form-control"
-              id="txtOfOptionTwo"
-              placeholder="Enter here the second option"
-              onKeyUp={this.handleOptionTwo}
-            />
-          </div>
 
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={this.handleCreateQuestion}
-          >
-            Submit
-          </button>
-        </form>
-      </div>
-    );
+    const isLoggedIn = this.props.isLoggedIn;
+    if (isLoggedIn) {
+      
+      return (
+        <div className="createQuestion">
+          <h4 className="title">Creating a new Question</h4>
+          <form>
+            <div className="form-group">
+              <label htmlFor="txtOfOptionOne">Option One</label>
+              <input
+                type="text"
+                className="form-control"
+                id="txtOfOptionOne"
+                placeholder="Enter here the first option"
+                onKeyUp={this.handleOptionOne}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="txtOfOptionTwo">Option Two</label>
+              <input
+                type="text"
+                className="form-control"
+                id="txtOfOptionTwo"
+                placeholder="Enter here the second option"
+                onKeyUp={this.handleOptionTwo}
+              />
+            </div>
+  
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={this.handleCreateQuestion}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      );
+
+    }
+    return <GuestGreeting />;
+
   }
 }
 
 function mapStateToProps(state) {
   return {
     authedUser: state.AuthedUser,
+    isLoggedIn: state.isLoggedIn
   };
 }
 

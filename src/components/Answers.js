@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class Answers extends Component {
   render() {
+    
     const answers = Object.entries(this.props.answers).map((answer) => {
       return { id: answer[0], answer: answer[1] };
     });
