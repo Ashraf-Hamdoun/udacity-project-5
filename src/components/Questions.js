@@ -40,7 +40,7 @@ class Questions extends Component {
           const element = mapAnswers[i];
           if (element.id === question.id) {
             status = "answered";
-            link = "#";
+            // link = "#";
           }
         }
 

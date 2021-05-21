@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 class Answers extends Component {
   render() {
-    
     const answers = Object.entries(this.props.answers).map((answer) => {
       return { id: answer[0], answer: answer[1] };
     });
@@ -27,7 +26,7 @@ class Answers extends Component {
     // arranged from the most recently created (top) to the least recently created (bottom)
     filterQues.sort((a, b) => {
       return b.timestamp - a.timestamp;
-    })
+    });
 
     // function to map the filtered questions
     const showAnswers = filterQues.map((answer) => {
