@@ -15,10 +15,9 @@ import Login from "./Login";
 import "../styles/App.scss";
 
 function App(props) {
-
-  console.log('authedUser is :: ', props.authedUser);
+  console.log("authedUser is :: ", props.authedUser);
   console.log("IsLoggedIn :: ", props.isLoggedIn);
-  
+
   return (
     // to insert the routes use BrowserRouter
     <BrowserRouter>
@@ -70,7 +69,7 @@ function App(props) {
 function mapStateToProps(state) {
   return {
     authedUser: state.AuthedUser,
-    isLoggedIn: state.isLoggedIn
+    isLoggedIn: state.isLoggedIn,
   };
 }
 

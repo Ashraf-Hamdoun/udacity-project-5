@@ -72,6 +72,9 @@ export const rootRducer = (state = initialState, action) => {
       // tell the user about completing the mation
       alert("Question was successfully created !");
       console.log(action.payload);
+      setTimeout(() => {
+        document.querySelector(".home a").style.display = "none";
+      }, 500);
       return state;
       // eslint-disable-next-line
       break;
@@ -102,7 +105,6 @@ export const rootRducer = (state = initialState, action) => {
       if (action.payload === "logging out") {
         initialState.AuthedUser = "";
         initialState.isLoggedIn = false;
-        console.log(action.payload);
       }
 
       console.log("you were logged out");

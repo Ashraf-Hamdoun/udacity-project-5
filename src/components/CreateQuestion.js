@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 // import all actions to dispatch them
 import * as actions from "../Store/actions";
@@ -84,13 +85,13 @@ class CreateQuestion extends Component {
               />
             </div>
   
-            <button
-              type="button"
+            <NavLink
+              to="/"
               className="btn btn-primary"
               onClick={this.handleCreateQuestion}
             >
               Submit
-            </button>
+            </NavLink>
           </form>
         </div>
       );
