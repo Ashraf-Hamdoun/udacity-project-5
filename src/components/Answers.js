@@ -24,6 +24,11 @@ class Answers extends Component {
       return { id: user[1].id, name: user[1].name, avatar: user[1].avatarURL };
     });
 
+    // arranged from the most recently created (top) to the least recently created (bottom)
+    filterQues.sort((a, b) => {
+      return b.timestamp - a.timestamp;
+    })
+
     // function to map the filtered questions
     const showAnswers = filterQues.map((answer) => {
       const author = users.filter((user) => {

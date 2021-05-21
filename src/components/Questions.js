@@ -11,6 +11,12 @@ class Questions extends Component {
       const questions = Object.entries(this.props.questions).map((question) => {
         return question[1];
       });
+
+      // arranged from the most recently created (top) to the least recently created (bottom)
+      const newQuestions = questions.sort(function (a, b) {
+        return b.timestamp - a.timestamp
+      });
+
       const users = Object.entries(this.props.users).map((user) => {
         return user[1];
       });
@@ -18,11 +24,12 @@ class Questions extends Component {
       const answersOfAuthUser = users.filter((user) => {
         return user.id === this.props.authedUser;
       })[0].answers;
+      
       const mapAnswers = Object.entries(answersOfAuthUser).map((ans) => {
         return { id: ans[0] };
       });
 
-      const showQuestions = questions.map((question) => {
+      const showQuestions = newQuestions.map((question) => {
         const author = users.filter((user) => {
           return user.id === question.author;
         })[0];

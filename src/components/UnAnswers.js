@@ -27,8 +27,7 @@ class UnAnswers extends Component {
       }
     }
 
-    console.log("restOfQuestions", restOfQuestions);
-
+    // to compare the arrays
     function buildhist(arr) {
       var i;
       for (i = arr.length - 1; i >= 0; i--) {
@@ -53,6 +52,11 @@ class UnAnswers extends Component {
       return { id: user[1].id, name: user[1].name, avatar: user[1].avatarURL };
     });
 
+    // arranged from the most recently created (top) to the least recently created (bottom)
+    filterQues.sort((a, b) => {
+      return b.timestamp - a.timestamp;
+    })
+    
     const showAnswers = filterQues.map((answer) => {
       const author = users.filter((user) => {
         return user.id === answer.author;
