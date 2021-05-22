@@ -74,9 +74,7 @@ export const rootRducer = (state = initialState, action) => {
       // tell the user about completing the mation
       alert("Question was successfully created !");
       console.log(action.payload);
-      setTimeout(() => {
-        document.querySelector(".home a").style.display = "none";
-      }, 500);
+      
       return state;
       // eslint-disable-next-line
       break;

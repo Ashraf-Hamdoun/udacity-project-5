@@ -53,6 +53,13 @@ class Question extends Component {
     console.log(question);
 
     if (this.props.isLoggedIn) {
+      
+      if (question === undefined) {
+        return (
+          <Page404 />
+        )
+      }
+
       const users = Object.entries(this.props.users).map((user) => {
         return user[1];
       });
@@ -227,12 +234,10 @@ class Question extends Component {
           </div>
         </div>
       );
-    } else if ( question === undefined ) {
-      return (
-        <Page404 />
-      )
+    } else {
+      return <GuestGreeting dir={window.location.pathname} />
     }
-    return <GuestGreeting dir={window.location.pathname} />;
+
   }
 }
 

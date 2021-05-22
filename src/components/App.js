@@ -10,6 +10,7 @@ import CreateQuestion from "./CreateQuestion";
 import Questions from "./Questions";
 import Question from "./Question";
 import Login from "./Login";
+import LoginLink from "./LoginLink";
 import Page404 from "./Page_404";
 
 // connect our styles to the app
@@ -31,9 +32,7 @@ function App(props) {
             <Route exact path="/">
               <div className="home">
                 <h2>Would you rather ?</h2>
-                <NavLink to="/login" className="btn btn-primary">
-                  Start Now
-                </NavLink>
+                <LoginLink />
               </div>
             </Route>
             {/* leaderboard page */}
