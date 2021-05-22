@@ -372,3 +372,16 @@
         margin-bottom: 20px;
     }
 }
+
+.Page_404 {
+    .error-template {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
