@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import * as actions from "../Store/actions";
 
@@ -13,7 +13,7 @@ class Login extends Component {
   onChangeUser(User) {
     this.setState({
       AuthedUser: User,
-      moveAfterChoose: "/dashboard",
+      moveAfterChoose: this.props.dir,
     });
   }
 
@@ -49,14 +49,14 @@ class Login extends Component {
           </option>
           {showUsers}
         </select>
-        <NavLink
+        <Link
           id="moveAfterLogin"
           className="btn btn-danger"
           onClick={(e) => this.props.selectUser(this.state.AuthedUser)}
           to={this.state.moveAfterChoose}
         >
           log in
-        </NavLink>
+        </Link>
       </div>
     );
   }
@@ -65,6 +65,7 @@ class Login extends Component {
 function mapStateToProps(state) {
   return {
     users: state.users,
+    dir: state.dir,
   };
 }
 

@@ -6,6 +6,7 @@ const initialState = {
   questions: {},
   AuthedUser: "",
   isLoggedIn: false,
+  dir: '/dashboard',
 };
 
 // data from api
@@ -32,22 +33,23 @@ export const rootRducer = (state = initialState, action) => {
       if (action.payload !== "") {
         initialState.AuthedUser = action.payload;
         initialState.isLoggedIn = true;
+        document.querySelector(".userLinks").style.display = "flex";
+        document.querySelector(".userLinks").style.justifyContent =
+          "space-between";
+
+        // select user to catch its avatar url
+        const user = Object.entries(initialState.users)
+          .map((user) => {
+            return user[1];
+          })
+          .filter((user) => user.id === initialState.AuthedUser)[0];
+
+        document.querySelector(
+          ".userLinks .userImg"
+        ).style.backgroundImage = `url(${user.avatarURL})`;
         setTimeout(() => {
-          document.querySelector(".userLinks").style.display = "flex";
-          document.querySelector(".userLinks").style.justifyContent =
-            "space-between";
-
-          // select user to catch its avatar url
-          const user = Object.entries(initialState.users)
-            .map((user) => {
-              return user[1];
-            })
-            .filter((user) => user.id === initialState.AuthedUser)[0];
-
-          document.querySelector(
-            ".userLinks .userImg"
-          ).style.backgroundImage = `url(${user.avatarURL})`;
-        }, 2000);
+          window.history.pushState({}, '/login')
+        }, 500)
         console.log("AuthedUser is ::  ", action.payload);
         return state;
       } else {
@@ -105,9 +107,20 @@ export const rootRducer = (state = initialState, action) => {
       if (action.payload === "logging out") {
         initialState.AuthedUser = "";
         initialState.isLoggedIn = false;
+        initialState.dir = "/dashboard";
       }
 
       console.log("you were logged out");
+
+      return state;
+      // eslint-disable-next-line
+      break;
+    
+    // function to log out
+    case "SET_DIR":
+      initialState.dir = action.payload;
+      
+      console.log(initialState.dir);
 
       return state;
       // eslint-disable-next-line

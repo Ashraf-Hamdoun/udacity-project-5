@@ -34,3 +34,12 @@ export const LOG_OUT = () => {
 
   return action;
 };
+
+export const SET_DIR = (dir) => {
+  const action = {
+    type: "SET_DIR",
+    payload: dir,
+  };
+
+  return action;
+};
