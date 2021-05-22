@@ -97,7 +97,7 @@ class CreateQuestion extends Component {
       );
 
     }
-    return <GuestGreeting />;
+    return <GuestGreeting dir={ window.location.pathname }/>;
 
   }
 }

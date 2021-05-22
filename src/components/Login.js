@@ -11,10 +11,17 @@ class Login extends Component {
   };
 
   onChangeUser(User) {
-    this.setState({
-      AuthedUser: User,
-      moveAfterChoose: this.props.dir,
-    });
+    if (this.props.dir === '/login') {
+      this.setState({
+        AuthedUser: User,
+        moveAfterChoose: '/dashboard',
+      });
+    } else {
+      this.setState({
+        AuthedUser: User,
+        moveAfterChoose: this.props.dir,
+      });
+    }
   }
 
   render() {

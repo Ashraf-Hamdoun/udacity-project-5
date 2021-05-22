@@ -128,7 +128,7 @@ class Questions extends Component {
         </div>
       );
     }
-    return <GuestGreeting />;
+    return <GuestGreeting dir={ window.location.pathname }/>;
   }
 }
 

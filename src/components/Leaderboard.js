@@ -115,7 +115,7 @@ function Leaderboard(props) {
     );
   }
 
-  return <GuestGreeting dir="/leaderboard"/>;
+  return <GuestGreeting dir={ window.location.pathname }/>;
 }
 
 function mapStateToProps(state) {

@@ -142,7 +142,7 @@ class Dashboard extends Component {
         </BrowserRouter>
       );
     }
-    return <GuestGreeting />;
+    return <GuestGreeting dir={ window.location.pathname }/>;
   }
 }
 
