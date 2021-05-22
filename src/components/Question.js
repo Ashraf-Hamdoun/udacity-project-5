@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import GuestGreeting from "./GuestGreeting";
+import Page404 from "./Page_404";
 
 import * as actions from "../Store/actions";
 
@@ -39,17 +40,19 @@ class Question extends Component {
   };
 
   render() {
+    const questionId = window.location.pathname.split("/questions/")[1];
+
+    const questions = Object.entries(this.props.questions).map((question) => {
+      return question[1];
+    });
+
+    const question = questions.filter((ques) => {
+      return ques.id === questionId;
+    })[0];
+
+    console.log(question);
+
     if (this.props.isLoggedIn) {
-      const questionId = window.location.pathname.split("/questions/")[1];
-
-      const questions = Object.entries(this.props.questions).map((question) => {
-        return question[1];
-      });
-
-      const question = questions.filter((ques) => {
-        return ques.id === questionId;
-      })[0];
-
       const users = Object.entries(this.props.users).map((user) => {
         return user[1];
       });
@@ -224,8 +227,12 @@ class Question extends Component {
           </div>
         </div>
       );
+    } else if ( question === undefined ) {
+      return (
+        <Page404 />
+      )
     }
-    return <GuestGreeting dir={ window.location.pathname }/>;
+    return <GuestGreeting dir={window.location.pathname} />;
   }
 }
 

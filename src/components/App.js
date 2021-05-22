@@ -60,7 +60,7 @@ function App(props) {
             <Route exact path="/login">
               <Login />
             </Route>
-            <Route exact path="*">
+            <Route path="*">
               <Page404 />
             </Route>
           </Switch>
