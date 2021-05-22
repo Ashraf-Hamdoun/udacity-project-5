@@ -4,13 +4,21 @@ import { connect } from "react-redux";
 import GuestGreeting from "./GuestGreeting";
 
 function Leaderboard(props) {
-
   if (props.isLoggedIn) {
     const users = Object.entries(props.users).map((user) => {
       return user[1];
     });
 
     const questions = Object.entries(props.questions).length;
+
+    // arranged from the most recently created (top) to the least recently created (bottom)
+    users.sort((a, b) => {
+      return (
+        b.questions.length +
+        Object.entries(b.answers).length -
+        (a.questions.length + Object.entries(a.answers).length)
+      );
+    });
 
     const showUsers = users.map((user) => {
       const answers = Object.entries(user.answers).length;
@@ -115,7 +123,7 @@ function Leaderboard(props) {
     );
   }
 
-  return <GuestGreeting dir={ window.location.pathname }/>;
+  return <GuestGreeting dir={window.location.pathname} />;
 }
 
 function mapStateToProps(state) {
