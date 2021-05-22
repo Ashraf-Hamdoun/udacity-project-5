@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 
 import * as actions from "../Store/actions";
 
-import Login from './Login';
-
 class GuestGreeting extends Component {
     
     handleLogin = () => {

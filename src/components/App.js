@@ -10,7 +10,7 @@ import CreateQuestion from "./CreateQuestion";
 import Questions from "./Questions";
 import Question from "./Question";
 import Login from "./Login";
-import Page_404 from "./Page_404";
+import Page404 from "./Page_404";
 
 // connect our styles to the app
 import "../styles/App.scss";
@@ -61,7 +61,7 @@ function App(props) {
               <Login />
             </Route>
             <Route exact path="*">
-              <Page_404 />
+              <Page404 />
             </Route>
           </Switch>
         </main>
