@@ -1,5 +1,5 @@
 /** Routers */
-import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 // importing of our components
